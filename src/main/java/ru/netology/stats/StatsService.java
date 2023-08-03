@@ -29,11 +29,32 @@ public class StatsService {
         int monthMinimum = 0;
 
         for(int i = 0; i < sales.length; i++) {
-            if (sales[i] >= sales[monthMinimum]) {
+            if (sales[i] <= sales[monthMinimum]) {
                 monthMinimum = i;
             }
         }
 
         return monthMinimum + 1;
     }
+
+    public int salesBellowAverage(long[] sales) {
+        int counter = 0;
+        for (long sale : sales) {
+            if(sale < average(sales)) {
+                counter++;
+            }
+        }
+        return counter;
+    }
+
+    public int salesOverAverage(long[] sales) {
+        int counter = 0;
+        for (long sale : sales) {
+            if(sale > average(sales)) {
+                counter++;
+            }
+        }
+        return counter;
+    }
+
 }
